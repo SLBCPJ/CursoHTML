@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio JavaScript</title>
+    <!-- <script>
+        // crear una funcion que te calcule una ecuacion de 2do grado. Pasaremos 3 parametros a,b,c
+
+    </script> -->
+</head>
+<body>
+    
+    <script>
+        // let nombre = "Jimmy";
+        // let apellido = "Pedraza";
+        // let direccion = "Mz 123 cs 19";
+        // let edad = 23;
+        // let datos = "Hola " + nombre+ " "+apellido+ " Te damos la bienvenida a nuestro sistema, su direccion es: " +direccion + " " + "su edad es: "+edad + " años.";
+        // console.log(datos);
+        // let saludo = `¡Hola Sr! ${nombre} ${apellido} ${direccion} ${edad} años`;
+        // // let saludo = `¡Hola Sr! ${nombre} ${apellido} ${direccion} ${edad} años`; interpolacion de datos es la mas recomendable a la hora de concatenar y es mas sencilla.
+        // console.log(saludo);
+
+        //numbers:
+        // let a = 3;
+        // let b = 5.6;
+        // let c = "9";
+
+        // console.log(a+b);
+        // console.log(c);
+        // console.log(a + parseInt(9));
+        // console.log(typeof a, typeof c);
+
+        // //booleans
+        // let v = true;
+        // let f = false;
+        // console.log(v,f);
+        // undefined, null,NaN esto es para datos vacios y el NaN cuando se trata de operar tipos de datos diferentes
+
+        //funciones:
+        //1 funcion declarativa
+        // function suma() {
+        //     a= 39;
+        //     b= 76;
+        //     resultado= a+b;
+        //     console.log(resultado);
+
+        // }
+        // //esto es para invocar una funcion siempre debe de ir el ();
+        // suma();
+
+        // function bienvenida(nombre,edad,cargo,experiencia) {
+        //     console.log(`Hola bienvenido ${nombre}, tienes ${edad} años, su cargo es: ${cargo} y tienes  ${experiencia} años de experiencia`);
+        // }
+        // bienvenida("Jimmy Cohetata", 23, "programador web",2);
+
+        //Arrays
+
+        // const a = ["Jimmy Cohetata", 23, "programador web",2]
+        // console.log(a);
+
+        // const animales = ["Gato","Perro","Loro"];
+        // console.log(animales);
+        // //el metodo push me sirve para agregar mas elementos al array y el metodo pop para quitar elementos
+        // animales.push("Tigre","Leon")
+        // console.log(animales);
+
+        // const persona  = {
+        //     nombre: "Jimmy",
+        //     apellido: "Cohetata Pedraza",
+        //     direccion: "Mz 123 Cs 19",
+        //     edad: 23,
+        //     soltero: true,
+        //     email: "jiimmypedrazz@gmail.com"
+
+        // }
+        // console.log(persona);
+
+        //condicion para saber si un numero es par o impar
+        // let numero = prompt('Indique un numero: ');
+        // if ((numero%2)===0) {
+        //     console.log(`Es par el numero: ${numero}`);
+        // } else {
+        //     console.log(`Es impar el numero: ${numero}`);
+        // }
+
+        //alt + 34 comillas dobles
+        // console.log(console);
+        // console.warn('esto es una advertencia');
+        // console.info('esto es un mensaje');
+    //     console.clear();
+    //   console.log(Date);
+    //   let fecha = new Date();
+    //   console.log(fecha);
+
+    // !!!!Importante: prompt solo lee caracteres por ende si solo nombramos prompt no suma correctamente la solucion es convertirlo a numero con parseInt
+        // let cadena = "";
+        // let a = parseInt(prompt('#1'));
+        // let b = parseInt(prompt('#2'));
+        // let r = a + b;
+        // alert(`El resultado de la suma es: ${r}`); 
+        // console.log(`El resultado es: ${r}`);
+        // const pa = 'Hola Mundo';
+        // console.log(`Esta palabra contiene: ${pa} de letras`.length);
+            
+
+        //ejercicio 1
+         function contarCadena() {
+           fhola = 'Hola Mundo';
+            console.log(fhola.length);
+         }
+         //contarCadena();
+       
+
+        //ejercicio 2 operador ternario ? parte true : parte false la funcion slice sirve para recortar texto
+        const recortarTexto = (cadena = "",longitud=undefined)=>(!cadena) 
+            ? console.warn('¡¡No ingresaste una cadena de texto!!') 
+            : console.info(cadena.slice(0, longitud));
+        //recortarTexto('Hola Mundo',4);
+        //recortarTexto();
+        //ejercicio 3
+        function miFuncion() {
+            h = 'Hola que tal';
+            console.log(h.split(""));
+        }
+        //miFuncion();
+        let hola = 'Hola que tal';
+        //console.log(hola.split(''));
+
+        //ejercicio 4
+        function otraF() {
+            ho = 'Hola Mundo ';
+            console.log(ho.repeat(3));
+        }
+        //otraF();
+         
+          
+        //   let numero = prompt('Indique un numero: ');
+        //   if ((numero%2)===0) {
+        //  console.log(`Es par el numero: ${numero}`);
+        //  } else {
+        //  console.log(`Es impar el numero: ${numero}`);
+        //  }
+  
+        const nprimo = (numero=undefined)=>{
+            if(numero === undefined)  return console.warn('no ingresaste un número');
+
+            // la validacion con Typeof nos sirve para saber que tiene que ingresar un numero no puede ser texto ni nada diferente a number.
+            if(typeof numero !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`);
+            if (numero === 0) return console.error('El numero no puede ser 0');
+            if (numero === 1) return console.error('El numero no puede ser 1');
+
+            // el Math.sign me sirve para validar que no sean numeros negativos
+            if(Math.sign(numero) === -1) return console.error('El numero no puede ser negativo');
+
+            let divisible = false;
+
+            //aplicamos un ciclo for para recorrer los numeros y con el break finalizamos el ciclo ya que si no hacemos esto el ciclo lee todos esos numeros y es algo que genera problemas por ende no es recomendable
+            for (let i = 2; i < numero; i++) {
+                if ((numero%i) === 0) {
+                    divisible = true;
+                    break;
+                }
+                
+            }
+            return(divisible)
+            ? console.log(`El numero ${numero}, No es primo`)
+            : console.log(`El numero ${numero}, Si es primo`)
+        }
+
+        // nprimo();
+        // nprimo("7");
+        // nprimo(7);
+        // nprimo(0);
+        // nprimo(-3);
+        // nprimo(200);
+        const n = (numero=undefined)=>{
+            if(numero === undefined)  return console.warn('no ingresaste un número');
+
+            // la validacion con Typeof nos sirve para saber que tiene que ingresar un numero no puede ser texto ni nada diferente a number.
+            if(typeof numero !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`);
+
+            return((numero%2) === 0)
+            ? console.log(`El numero ${numero}, Si es par`)
+            : console.log(`El numero ${numero}, No es par`)
+        }
+        // n();
+        // n("645");
+        // n(35);
+        // n(1);
+        // n(-20);
+
+        //esto es una funcion expresada array function se hace para ahorrar codigo es mas visto en frameworks como angular react, etc es mas recomendable trabajar asi de esta forma.
+        const convertirGrados = (grados = undefined, unidad= undefined)=>{
+            if(grados === undefined)  return console.warn("no ingresaste grados a convertir");
+
+           // la validacion con Typeof nos sirve para saber que tiene que ingresar un numero no puede ser texto ni nada diferente a number.
+            if(typeof grados !== "number") return console.error(`El valor "${grados}" ingresado, No es un numero`);
+            if(unidad === undefined)  return console.warn("no ingresaste el tipo de grado a convertir");
+            if(typeof unidad !== "string") return console.error(`El valor "${unidad}" ingresado, No es una cadena de texto`);
+            if(unidad.length !== 1 ||!/(C|F)/.test(unidad))  return console.warn("valor de unidad no reconocido");
+            //es una prueba para saber si funciona o no la anterior linea de codigo console.info("Si funciona");
+            if(unidad === "C"){
+                return console.info(`${grados}°C = ${Math.round((grados*(9/5))+32)}°F`);
+            }else if(unidad === "F"){
+                return console.info(`${grados}°F = ${Math.round(((grados -32)*(5/59)))}°C`);
+            }else{
+                    return console.info("EL tipo de grado a convertir no es Valido");
+                }
+        }
+        /* convertirGrados();
+        convertirGrados("2");
+        convertirGrados(3, true);
+        convertirGrados(5, "sdaads");
+        convertirGrados(6);
+        convertirGrados(32,"F");
+        convertirGrados(100,"C");
+         */
+
+            const devolverCuadrados = (arr= undefined)=>{
+                if(arr === undefined) return console.warn("Ni ingresaste un arreglo de números");
+                if(!(arr instanceof Array)) return console.error("El valor que ingresaste no es un arreglo");
+                if(arr.length === 0)return console.error("El arreglo esta vacío");
+                for (const num of arr) {
+                    if(typeof num !== "number") return console.error(`El valor "${numb}" ingresado no es un número`);
+                }
+
+                const newArr = arr.map(el => el*el);
+                return console.info(`Arreglo original: ${arr}, \nArreglo elevado al cuadrado: ${newArr}`);
+            
+            }
+            devolverCuadrados();
+            devolverCuadrados([1,3,5]);
+            devolverCuadrados([]);
+            devolverCuadrados({});
+            
+    </script>
+</body>
+</html>
